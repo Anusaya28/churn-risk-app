@@ -1,0 +1,2907 @@
+hi
+
+
+ChatGPT said:
+Hi Anusaya! 😊
+How can I assist you today?
+
+
+
+
+
+
+
+
+You said:
+i will share you one dataset, with one roadmap,please help me to complete that
+
+
+ChatGPT said:
+Absolutely, Anusaya! Please go ahead and:
+
+Upload or paste your dataset (or describe its structure).
+
+Share your roadmap — what you're planning to do with the dataset, step-by-step if possible.
+
+Once I have both, I’ll help you complete each step.
+
+
+
+
+
+
+
+
+You said:
+customer_churn_data jyoti.csv
+Spreadsheet
+🗓 Roadmap (May 30 – June 28, 2025).pdf
+PDF
+please guide me steep by steep
+
+
+ChatGPT said:
+Great, Anusaya! You've uploaded:
+
+Dataset: customer_churn_data jyoti.csv
+
+Roadmap: A detailed step-by-step project plan from May 30 – June 28, 2025.
+
+Let's follow the roadmap step by step starting from Phase 1.
+
+✅ Phase 1: Data Understanding & Cleaning (May 30 – June 1)
+🔹 Step 1: Load Dataset and Understand Columns
+Let's begin by checking:
+
+Data types
+
+Null values
+
+Overall structure
+
+Here’s the code to get started:
+
+python
+Copy
+Edit
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('customer_churn_data jyoti.csv')
+
+# Show first few rows
+print(df.head())
+
+# Get info about columns & datatypes
+print(df.info())
+
+# Check for missing values
+print(df.isnull().sum())
+Would you like me to analyze and share the summary of these steps directly from your file?
+
+If yes, I’ll proceed and give:
+
+A column summary
+
+Null value report
+
+Notes on data types & date conversion if needed
+
+Let me know, or you can run the code above and share the output.
+
+
+
+
+
+
+
+
+You said:
+  CustomerID  Age  Gender Location     Occupation Income Bracket  \
+0  CUST00000   49   Other     West        Retired            Low   
+1  CUST00001   53    Male     West       Salaried            Low   
+2  CUST00002   67  Female    North  Self-employed         Medium   
+3  CUST00003   54    Male    South  Self-employed         Medium   
+4  CUST00004   65    Male    South        Student         Medium   
+
+   Credit Score Onboarding Date Channel  App Logins  ...  Current Plan  \
+0           792      2019-07-28  Branch        21.0  ...        Silver   
+1           356      2011-03-28  Online         4.0  ...      Platinum   
+2           441      2017-11-21  Branch         NaN  ...         Basic   
+3           708      2017-03-18  Online        11.0  ...          Gold   
+4           377      2011-04-22  Online        10.0  ...          Gold   
+
+      Plan History  Subscription Renewals Payment Mode Tickets Raised  \
+0    Silver > Gold                      0         Auto            4.0   
+1  Gold > Platinum                      0         Auto            0.0   
+2   Basic > Silver                      0       Manual            2.0   
+3  Gold > Platinum                      0         Auto            1.0   
+4   Basic > Silver                      0         Auto            0.0   
+
+   Resolution Time (hrs)  Sentiment Score  NPS Score  Survey Feedback  Churned  
+0              26.993946         0.570978          2              Bad        0  
+1             101.537031         0.832714          7             Good        1  
+2              29.379271         0.442001          6              Bad        0  
+3             167.618638         0.264915          5          Neutral        0  
+4               5.694075         0.253205          5             Good        0  
+
+[5 rows x 36 columns]
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 10000 entries, 0 to 9999
+Data columns (total 36 columns):
+ #   Column                 Non-Null Count  Dtype  
+---  ------                 --------------  -----  
+ 0   CustomerID             10000 non-null  object 
+ 1   Age                    10000 non-null  int64  
+ 2   Gender                 10000 non-null  object 
+ 3   Location               10000 non-null  object 
+ 4   Occupation             9500 non-null   object 
+ 5   Income Bracket         10000 non-null  object 
+ 6   Credit Score           10000 non-null  int64  
+ 7   Onboarding Date        10000 non-null  object 
+ 8   Channel                10000 non-null  object 
+ 9   App Logins             9500 non-null   float64
+ 10  Web Logins             10000 non-null  float64
+ 11  Session Duration       10000 non-null  float64
+ 12  Time Between Sessions  10000 non-null  float64
+ 13  Device Type            10000 non-null  object 
+ 14  OS Version             10000 non-null  object 
+ 15  Loans Accessed         10000 non-null  int64  
+ 16  Savings Accessed       10000 non-null  int64  
+ 17  Card Mgmt Accessed     10000 non-null  int64  
+ 18  Monthly Avg Balance    9500 non-null   float64
+ 19  Debit Count            10000 non-null  int64  
+ 20  Credit Count           10000 non-null  int64  
+ 21  Loans Taken            10000 non-null  int64  
+ 22  Repayment Misses       10000 non-null  int64  
+ 23  Overdraft Events       10000 non-null  int64  
+ 24  Declined Txns          10000 non-null  int64  
+ 25  Failed Payments        10000 non-null  int64  
+ 26  Current Plan           10000 non-null  object 
+ 27  Plan History           10000 non-null  object 
+ 28  Subscription Renewals  10000 non-null  int64  
+ 29  Payment Mode           10000 non-null  object 
+ 30  Tickets Raised         9500 non-null   float64
+ 31  Resolution Time (hrs)  10000 non-null  float64
+ 32  Sentiment Score        10000 non-null  float64
+ 33  NPS Score              10000 non-null  int64  
+ 34  Survey Feedback        10000 non-null  object 
+ 35  Churned                10000 non-null  int64  
+dtypes: float64(8), int64(15), object(13)
+memory usage: 2.7+ MB
+None
+CustomerID                 0
+Age                        0
+Gender                     0
+Location                   0
+Occupation               500
+Income Bracket             0
+Credit Score               0
+Onboarding Date            0
+Channel                    0
+App Logins               500
+Web Logins                 0
+Session Duration           0
+Time Between Sessions      0
+Device Type                0
+OS Version                 0
+Loans Accessed             0
+Savings Accessed           0
+Card Mgmt Accessed         0
+Monthly Avg Balance      500
+Debit Count                0
+Credit Count               0
+Loans Taken                0
+Repayment Misses           0
+Overdraft Events           0
+Declined Txns              0
+Failed Payments            0
+Current Plan               0
+Plan History               0
+Subscription Renewals      0
+Payment Mode               0
+Tickets Raised           500
+Resolution Time (hrs)      0
+Sentiment Score            0
+NPS Score                  0
+Survey Feedback            0
+Churned                    0
+dtype: int64
+
+
+ChatGPT said:
+Perfect, Anusaya! You've done a great job running the Phase 1 checks. Let's summarize and handle each requirement from Phase 1: Data Understanding & Cleaning.
+
+✅ PHASE 1 COMPLETE WALKTHROUGH
+🔹 1. Column Overview
+✅ 36 columns
+
+Target column: Churned (0 = No churn, 1 = Churn)
+
+🔹 2. Missing Value Report
+You have missing values in:
+
+Column	Missing Count
+Occupation	500
+App Logins	500
+Monthly Avg Balance	500
+Tickets Raised	500
+
+📌 These are 5% missing (500/10,000), so can be:
+
+Imputed with mean/median/mode
+
+Or dropped if you plan modeling and they’re not important
+
+➡ Recommendation:
+
+df.fillna({
+    'Occupation': df['Occupation'].mode()[0],
+    'App Logins': df['App Logins'].median(),
+    'Monthly Avg Balance': df['Monthly Avg Balance'].median(),
+    'Tickets Raised': df['Tickets Raised'].median()
+}, inplace=True)
+
+🔹 3. Date Conversion
+python
+Copy
+Edit
+df['Onboarding Date'] = pd.to_datetime(df['Onboarding Date'])
+You can also extract features like:
+
+python
+Copy
+Edit
+# Time since onboarding
+df['Customer_Tenure_Years'] = (pd.Timestamp('today') - df['Onboarding Date']).dt.days // 365
+🔹 4. Class Imbalance
+python
+Copy
+Edit
+print(df['Churned'].value_counts(normalize=True))
+This will show churn rate, e.g.:
+
+🔍 Class Imbalance Analysis (Churned Column)
+Churned	Proportion
+0	80.38%
+1	19.62%
+
+✅ Insights:
+Your dataset is imbalanced — only ~20% customers churned.
+
+This imbalance can affect model performance (e.g., model may favor class 0 to get high accuracy).
+
+🔧 Recommendations:
+You’ll address this later in modeling phases, but keep these in mind:
+
+During train/test split:
+
+python
+Copy
+Edit
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42)
+✅ stratify=y ensures churn ratio stays balanced across splits.
+
+During modeling:
+
+Use balanced class weights (e.g., class_weight='balanced' in Logistic Regression)
+
+Or apply resampling:
+
+Oversample: SMOTE
+
+Undersample: RandomUnderSampler
+
+==============================================================================
+let clear me one thing, give an example for imbalance & balance dataset, i can identify
+
+
+ChatGPT said:
+Absolutely, Anusaya! Let’s break it down clearly so you can easily identify a balanced vs. imbalanced dataset — especially in binary classification like churn prediction.
+
+✅ What is an Imbalanced Dataset?
+An imbalanced dataset has significantly more observations in one class than the other.
+
+📉 Example of Imbalanced Dataset (like yours):
+You are predicting Churned (Yes = 1, No = 0).
+
+Churned	Count	Percentage
+0 (No)	8,038	80.38%
+1 (Yes)	1,962	19.62%
+
+🔸 This is imbalanced because:
+
+Majority of records are class 0.
+
+Only ~20% are class 1 (the minority class).
+
+Models may ignore minority class to achieve higher accuracy.
+
+✅ What is a Balanced Dataset?
+A balanced dataset has roughly equal observations in each class.
+
+📊 Example of Balanced Dataset:
+Churned	Count	Percentage
+0 (No)	5,000	50%
+1 (Yes)	5,000	50%
+
+🔹 This is balanced because:
+
+Both classes have equal representation.
+
+Models can learn patterns from both classes equally.
+
+🧠 Why It Matters:
+In imbalanced data, models tend to predict the majority class only.
+
+E.g., a model that predicts "No Churn" for all rows gets 80% accuracy — but fails to detect churners!
+
+Solutions:
+
+Use stratify=y in splits
+
+Use class_weight='balanced'
+
+Use oversampling (SMOTE) or undersampling
+
+✅ TL;DR:
+Metric	Balanced	Imbalanced
+Distribution	~50:50	Skewed like 80:20
+Example	5K class 0, 5K class 1	8K class 0, 2K class 1
+Model Risk	Fair	Biased toward majority
+
+Let me know if you want code examples to balance your dataset using SMOTE or class weights.
+==================================================================================================
+erfect, Anusaya! Let's look at two common ways to handle imbalanced data using Python:
+
+✅ Option 1: Use class_weight='balanced' in your model
+This is useful for models like Logistic Regression, Random Forest, etc.
+
+🔹 Example with Logistic Regression:
+python
+Copy
+Edit
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+
+# Features & target
+X = df.drop(columns=['CustomerID', 'Churned'])
+y = df['Churned']
+
+# Train-test split with stratify to maintain class ratio
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42)
+
+# Train model with balanced class weight
+model = LogisticRegression(class_weight='balanced')
+model.fit(X_train, y_train)
+✅ This tells the model to penalize mistakes on minority class more.
+
+✅ Option 2: Use SMOTE (Synthetic Minority Over-sampling Technique)
+This method creates synthetic samples of the minority class.
+
+🔹 Installation (if needed):
+bash
+Copy
+Edit
+pip install imbalanced-learn
+
+pip install imbalanced-learn  where it need to installed, in cmd
+
+
+ChatGPT said:
+Yes, Anusaya — you should run:
+
+bash
+Copy
+Edit
+pip install imbalanced-learn
+in the Command Prompt (CMD) or your terminal/Anaconda prompt, depending on your setup.
+
+✅ Here's where to run it, based on your environment:
+🔸 If you're using Jupyter Notebook:
+You can run this directly inside a notebook cell with a !:
+
+python
+Copy
+Edit
+!pip install imbalanced-learn
+🔸 If you're using CMD or PowerShell (Windows):
+Press Win + R, type cmd, press Enter.
+
+Run:
+
+bash
+Copy
+Edit
+pip install imbalanced-learn
+🔸 If you're using Anaconda:
+Open the Anaconda Prompt, then run:
+
+bash
+Copy
+Edit
+pip install imbalanced-learn
+💡 After Installation:
+You can check if it was installed correctly by importing it:
+
+python
+Copy
+Edit
+from imblearn.over_sampling import SMOTE
+
+--------------------------------------------------
+
+🔹 Code with SMOTE:
+python
+Copy
+Edit
+from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import train_test_split
+
+# Define X and y
+X = df.drop(columns=['CustomerID', 'Churned'])
+y = df['Churned']
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42)
+
+# Apply SMOTE on training data
+smote = SMOTE(random_state=42)
+X_train_bal, y_train_bal = smote.fit_resample(X_train, y_train)
+
+# Check class balance after SMOTE
+print(y_train_bal.value_counts())
+
+# Now train your model on X_train_bal, y_train_bal
+📊 Result:
+class_weight='balanced' adjusts algorithm behavior during training.
+
+SMOTE changes your data distribution before training.
+
+✅ Which to Use?
+Method	When to Use
+class_weight	For models that support it directly
+SMOTE	For data balancing across all models (incl. tree-based)
+
+
+
+code gives an error
+----------------------------
+from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import train_test_split
+
+# Define X and y
+X = df.drop(columns=['CustomerID', 'Churned'])
+y = df['Churned']
+
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42)
+
+# Apply SMOTE on training data
+smote = SMOTE(random_state=42)
+X_train_bal, y_train_bal = smote.fit_resample(X_train, y_train)
+
+# Check class balance after SMOTE
+print(y_train_bal.value_counts())
+--------------------------------------------
+
+error:-
+===========
+--------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+~\AppData\Local\Temp\ipykernel_688\745516838.py in ?()
+     10     X, y, test_size=0.2, stratify=y, random_state=42)
+     11 
+     12 # Apply SMOTE on training data
+     13 smote = SMOTE(random_state=42)
+---> 14 X_train_bal, y_train_bal = smote.fit_resample(X_train, y_train)
+     15 
+     16 # Check class balance after SMOTE
+     17 print(y_train_bal.value_counts())
+
+~\anaconda3\Lib\site-packages\imblearn\base.py in ?(self, X, y)
+    204         y_resampled : array-like of shape (n_samples_new,)
+    205             The corresponding label of `X_resampled`.
+    206         """
+    207         self._validate_params()
+--> 208         return super().fit_resample(X, y)
+
+~\anaconda3\Lib\site-packages\imblearn\base.py in ?(self, X, y)
+    102             The corresponding label of `X_resampled`.
+    103         """
+    104         check_classification_targets(y)
+    105         arrays_transformer = ArraysTransformer(X, y)
+--> 106         X, y, binarize_y = self._check_X_y(X, y)
+    107 
+    108         self.sampling_strategy_ = check_sampling_strategy(
+    109             self.sampling_strategy, y, self._sampling_type
+
+~\anaconda3\Lib\site-packages\imblearn\base.py in ?(self, X, y, accept_sparse)
+    157     def _check_X_y(self, X, y, accept_sparse=None):
+    158         if accept_sparse is None:
+    159             accept_sparse = ["csr", "csc"]
+    160         y, binarize_y = check_target_type(y, indicate_one_vs_all=True)
+--> 161         X, y = self._validate_data(X, y, reset=True, accept_sparse=accept_sparse)
+    162         return X, y, binarize_y
+
+~\anaconda3\Lib\site-packages\sklearn\base.py in ?(self, X, y, reset, validate_separately, cast_to_ndarray, **check_params)
+    646                 if "estimator" not in check_y_params:
+    647                     check_y_params = {**default_check_params, **check_y_params}
+    648                 y = check_array(y, input_name="y", **check_y_params)
+    649             else:
+--> 650                 X, y = check_X_y(X, y, **check_params)
+    651             out = X, y
+    652 
+    653         if not no_val_X and check_params.get("ensure_2d", True):
+
+~\anaconda3\Lib\site-packages\sklearn\utils\validation.py in ?(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)
+   1297         raise ValueError(
+   1298             f"{estimator_name} requires y to be passed, but the target y is None"
+   1299         )
+   1300 
+-> 1301     X = check_array(
+   1302         X,
+   1303         accept_sparse=accept_sparse,
+   1304         accept_large_sparse=accept_large_sparse,
+
+~\anaconda3\Lib\site-packages\sklearn\utils\validation.py in ?(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)
+   1009                         )
+   1010                     array = xp.astype(array, dtype, copy=False)
+   1011                 else:
+   1012                     array = _asarray_with_order(array, order=order, dtype=dtype, xp=xp)
+-> 1013             except ComplexWarning as complex_warning:
+   1014                 raise ValueError(
+   1015                     "Complex data not supported\n{}\n".format(array)
+   1016                 ) from complex_warning
+
+~\anaconda3\Lib\site-packages\sklearn\utils\_array_api.py in ?(array, dtype, order, copy, xp, device)
+    747         # Use NumPy API to support order
+    748         if copy is True:
+    749             array = numpy.array(array, order=order, dtype=dtype)
+    750         else:
+--> 751             array = numpy.asarray(array, order=order, dtype=dtype)
+    752 
+    753         # At this point array is a NumPy ndarray. We convert it to an array
+    754         # container that is consistent with the input's namespace.
+
+~\anaconda3\Lib\site-packages\pandas\core\generic.py in ?(self, dtype, copy)
+   2149     def __array__(
+   2150         self, dtype: npt.DTypeLike | None = None, copy: bool_t | None = None
+   2151     ) -> np.ndarray:
+   2152         values = self._values
+-> 2153         arr = np.asarray(values, dtype=dtype)
+   2154         if (
+   2155             astype_is_view(values.dtype, arr.dtype)
+   2156             and using_copy_on_write()
+
+ValueError: could not convert string to float: 'Male'
+---------------------------------------------------------------
+what is that error
+=========================
+
+Thanks, Anusaya! This error is 100% expected — and very common — when applying SMOTE or any ML model on categorical (non-numeric) columns.
+
+❌ The Problem
+SMOTE (and most ML models) can't handle strings like 'Male', 'Low', 'Gold', etc.
+
+🔺 You're passing X with categorical columns, e.g.:
+
+Gender (Male, Female)
+
+Occupation
+
+Income Bracket
+
+Current Plan, etc.
+
+===================================================================================
+
+✅ Solution: Encode Categorical Columns First
+You must convert all categorical columns to numeric using encoding methods:
+
+🔹 Option A: Label Encoding (for models like tree-based)
+python
+Copy
+Edit
+from sklearn.preprocessing import LabelEncoder
+
+# Create a copy
+df_encoded = df.copy()
+
+# Encode all object (categorical) columns
+label_encoders = {}
+for col in df_encoded.select_dtypes(include='object').columns:
+    if col != 'CustomerID':  # skip CustomerID
+        le = LabelEncoder()
+        df_encoded[col] = le.fit_transform(df_encoded[col])
+        label_encoders[col] = le
+Now you can safely use SMOTE:
+
+python
+Copy
+Edit
+from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import train_test_split
+
+# Prepare data
+X = df_encoded.drop(columns=['CustomerID', 'Churned'])
+y = df_encoded['Churned']
+
+# Split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42)
+
+# Apply SMOTE
+smote = SMOTE(random_state=42)
+X_train_bal, y_train_bal = smote.fit_resample(X_train, y_train)
+
+# Check result
+print(y_train_bal.value_counts())
+--------------------------------------------------------
+it gives an error as :-
+-------------------------------
+---------------------------------------------------------------------------
+DTypePromotionError                       Traceback (most recent call last)
+Cell In[15], line 14
+     12 # Apply SMOTE
+     13 smote = SMOTE(random_state=42)
+---> 14 X_train_bal, y_train_bal = smote.fit_resample(X_train, y_train)
+     16 # Check result
+     17 print(y_train_bal.value_counts())
+
+File ~\anaconda3\Lib\site-packages\imblearn\base.py:208, in BaseSampler.fit_resample(self, X, y)
+    187 """Resample the dataset.
+    188 
+    189 Parameters
+   (...)
+    205     The corresponding label of `X_resampled`.
+    206 """
+    207 self._validate_params()
+--> 208 return super().fit_resample(X, y)
+
+File ~\anaconda3\Lib\site-packages\imblearn\base.py:106, in SamplerMixin.fit_resample(self, X, y)
+    104 check_classification_targets(y)
+    105 arrays_transformer = ArraysTransformer(X, y)
+--> 106 X, y, binarize_y = self._check_X_y(X, y)
+    108 self.sampling_strategy_ = check_sampling_strategy(
+    109     self.sampling_strategy, y, self._sampling_type
+    110 )
+    112 output = self._fit_resample(X, y)
+
+File ~\anaconda3\Lib\site-packages\imblearn\base.py:161, in BaseSampler._check_X_y(self, X, y, accept_sparse)
+    159     accept_sparse = ["csr", "csc"]
+    160 y, binarize_y = check_target_type(y, indicate_one_vs_all=True)
+--> 161 X, y = self._validate_data(X, y, reset=True, accept_sparse=accept_sparse)
+    162 return X, y, binarize_y
+
+File ~\anaconda3\Lib\site-packages\sklearn\base.py:650, in BaseEstimator._validate_data(self, X, y, reset, validate_separately, cast_to_ndarray, **check_params)
+    648         y = check_array(y, input_name="y", **check_y_params)
+    649     else:
+--> 650         X, y = check_X_y(X, y, **check_params)
+    651     out = X, y
+    653 if not no_val_X and check_params.get("ensure_2d", True):
+
+File ~\anaconda3\Lib\site-packages\sklearn\utils\validation.py:1301, in check_X_y(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)
+   1296         estimator_name = _check_estimator_name(estimator)
+   1297     raise ValueError(
+   1298         f"{estimator_name} requires y to be passed, but the target y is None"
+   1299     )
+-> 1301 X = check_array(
+   1302     X,
+   1303     accept_sparse=accept_sparse,
+   1304     accept_large_sparse=accept_large_sparse,
+   1305     dtype=dtype,
+   1306     order=order,
+   1307     copy=copy,
+   1308     force_writeable=force_writeable,
+   1309     force_all_finite=force_all_finite,
+   1310     ensure_2d=ensure_2d,
+   1311     allow_nd=allow_nd,
+   1312     ensure_min_samples=ensure_min_samples,
+   1313     ensure_min_features=ensure_min_features,
+   1314     estimator=estimator,
+   1315     input_name="X",
+   1316 )
+   1318 y = _check_y(y, multi_output=multi_output, y_numeric=y_numeric, estimator=estimator)
+   1320 check_consistent_length(X, y)
+
+File ~\anaconda3\Lib\site-packages\sklearn\utils\validation.py:887, in check_array(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_writeable, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)
+    883 pandas_requires_conversion = any(
+    884     _pandas_dtype_needs_early_conversion(i) for i in dtypes_orig
+    885 )
+    886 if all(isinstance(dtype_iter, np.dtype) for dtype_iter in dtypes_orig):
+--> 887     dtype_orig = np.result_type(*dtypes_orig)
+    888 elif pandas_requires_conversion and any(d == object for d in dtypes_orig):
+    889     # Force object if any of the dtypes is an object
+    890     dtype_orig = object
+
+DTypePromotionError: The DType <class 'numpy.dtypes.DateTime64DType'> could not be promoted by <class 'numpy.dtypes.Float64DType'>. This means that no common DType exists for the given inputs. For example they cannot be stored in a single array unless the dtype is `object`. The full list of DTypes is: (<class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.DateTime64DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Float64DType'>, <class 'numpy.dtypes.Float64DType'>, <class 'numpy.dtypes.Float64DType'>, <class 'numpy.dtypes.Float64DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Float64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int32DType'>, <class 'numpy.dtypes.Float64DType'>, <class 'numpy.dtypes.Float64DType'>, <class 'numpy.dtypes.Float64DType'>, <class 'numpy.dtypes.Int64DType'>, <class 'numpy.dtypes.Int32DType'>)
+
+---------------------
+why it happens
+------------------
+Thanks for the full error traceback, Anusaya — this one is very specific and here's exactly what’s happening:
+
+❌ Root Cause
+Your features X still contain a datetime column (likely "Onboarding Date"), which SMOTE cannot handle, because datetime can't be mixed with numeric arrays.
+
+✅ Fix: Drop or Convert the Date Column Before SMOTE
+🔧 Updated Steps:
+python
+Copy
+Edit
+from sklearn.preprocessing import LabelEncoder
+from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import train_test_split
+
+# 1. Copy the DataFrame
+df_encoded = df.copy()
+
+# 2. Drop the 'CustomerID' and 'Onboarding Date' (SMOTE can't handle datetime)
+df_encoded.drop(columns=['CustomerID', 'Onboarding Date'], inplace=True)
+
+# 3. Encode categorical columns
+label_encoders = {}
+for col in df_encoded.select_dtypes(include='object').columns:
+    le = LabelEncoder()
+    df_encoded[col] = le.fit_transform(df_encoded[col])
+    label_encoders[col] = le
+
+# 4. Define X and y
+X = df_encoded.drop(columns=['Churned'])
+y = df_encoded['Churned']
+
+# 5. Split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42)
+
+# 6. Apply SMOTE
+smote = SMOTE(random_state=42)
+X_train_bal, y_train_bal = smote.fit_resample(X_train, y_train)
+
+# 7. Check the result
+print(y_train_bal.value_counts())
+
+--------------------------------------------
+✅ Expected Output:
+yaml
+Copy
+Edit
+0    6430
+1    6430
+Now you have a balanced dataset ready for modeling!
+
+
+
+==========================================================================
+Awesome, Anusaya! 🎉
+You’ve successfully:
+
+✅ Cleaned the data
+✅ Handled missing values
+✅ Encoded categorical columns
+✅ Balanced the dataset with SMOTE
+✅ Got equal class counts (6430 churned / 6430 not churned)
+
+🔄 Quick Recap of Progress:
+Phase	Task	Status
+1	Data Understanding & Cleaning	✅ Done
+2	EDA (Visual Patterns)	🔄 Next
+3	Feature Engineering	🕐 Pending
+4A	Model Training (Logistic, RF)	🕐 Pending
+4B	Advanced Modeling (XGBoost etc.)	🕐 Pending
+5	SHAP Interpretation	🕐 Pending
+6A	Retention Strategy	🕐 Pending
+6B	Streamlit / API	🕐 Pending
+
+✅ Ready for Phase 2: Exploratory Data Analysis?
+Let’s start with churn vs features:
+
+🔹 Visual Ideas for Phase 2 (EDA):
+Churn Distribution (bar plot)
+
+Churn vs Age (violin or KDE plot)
+
+Churn by Plan (bar plot)
+
+Correlation Heatmap
+
+Churn vs Monthly Avg Balance
+
+Let me know:
+
+Do you want to start with basic churn visualizations?
+
+Or explore a specific feature (e.g., plan, gender, location)?
+
+I'll give you the exact code + interpretation.
+===================================================================
+✅ PHASE 2: Exploratory Data Analysis (EDA)
+We’ll go step by step and build these 5 core visuals:
+
+🔹 1. Churn Distribution (Bar Plot)
+(Without data label)
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Churn count bar plot
+sns.countplot(x='Churned', data=df)
+plt.title('Churn Distribution')
+plt.xlabel('Churned (0 = No, 1 = Yes)')
+plt.ylabel('Number of Customers')
+plt.show()
+
+-------------------------------------------------
+(with Data Label & faint colour code )
+==========================================
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set_style("whitegrid")
+plt.figure(figsize=(6, 4))
+
+# Use hue as recommended
+ax = sns.countplot(x='Churned', hue='Churned', data=df, palette='pastel', legend=False)
+
+# Add data labels
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f'{height}', 
+                (p.get_x() + p.get_width() / 2., height), 
+                ha='center', va='bottom', 
+                fontsize=10, color='black')
+
+# Titles and labels
+plt.title('Churn Distribution')
+plt.xlabel('Churned (0 = No, 1 = Yes)')
+plt.ylabel('Number of Customers')
+plt.tight_layout()
+plt.show()
+
+------------------------------------------------------
+✅ Insight:
+This gives you a quick visual of imbalance (confirming your earlier 80/20 split).
+=======================================================================================
+
+
+🔹 2. Churn vs Age (Violin Plot)
+============================================
+Without data label
+------------------------
+sns.violinplot(x='Churned', y='Age', data=df)
+plt.title('Age Distribution by Churn')
+plt.xlabel('Churned')
+plt.ylabel('Age')
+plt.show()
+-----------------------------------
+With data label,custom color
+==================================
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Style
+sns.set_style("whitegrid")
+plt.figure(figsize=(7, 5))
+
+# Palette
+palette = 'Set2'
+
+# Violin plot with quartiles
+ax = sns.violinplot(x='Churned', y='Age', hue='Churned', data=df,
+                    palette=palette, inner="quartile", legend=False)
+
+# Median labels
+medians = df.groupby('Churned')['Age'].median()
+counts = df['Churned'].value_counts().sort_index()  # 0, 1 order
+
+for i, (median, count) in enumerate(zip(medians, counts)):
+    ax.text(i, median + 1, 
+            f'Median: {int(median)}\nCount: {count}', 
+            ha='center', va='bottom', fontsize=10, fontweight='bold', color='black')
+
+# Titles and axis labels
+plt.title('Age Distribution by Churn', fontsize=13)
+plt.xlabel('Churned (0 = No, 1 = Yes)')
+plt.ylabel('Age')
+plt.tight_layout()
+plt.show()
+
+--------------------------------------------------------------------------------
+✅ Insight:
+See if young or older customers churn more. Violin plots show distribution + median.
+=====================================================================================
+
+🔹 3. Churn by Current Plan (Bar Plot)
+----------------------------
+Code without label
+------------------------------
+
+plt.figure(figsize=(8, 5))
+sns.countplot(x='Current Plan', hue='Churned', data=df)
+plt.title('Churn by Current Plan')
+plt.xlabel('Plan Type')
+plt.ylabel('Customer Count')
+plt.legend(title='Churned', labels=['No', 'Yes'])
+plt.show()
+-------------------------------------------
+code with label
+-------------------------------------------
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Set visual style
+sns.set_style("whitegrid")
+plt.figure(figsize=(8, 5))
+
+# Professional soft color palette (Set2 works well here)
+ax = sns.countplot(x='Current Plan', hue='Churned', data=df, palette='Set2')
+
+# Add data labels on top of each bar
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f'{int(height)}',
+                (p.get_x() + p.get_width() / 2., height),
+                ha='center', va='bottom',
+                fontsize=9, color='black')
+
+# Customize axes and legend
+plt.title('Churn by Current Plan', fontsize=13)
+plt.xlabel('Plan Type')
+plt.ylabel('Customer Count')
+plt.legend(title='Churned', labels=['No', 'Yes'])
+plt.tight_layout()
+plt.show()
+==============================================================
+✅ Insight:
+This shows which plans (e.g., Basic, Gold) have more churners.
+
+===================================================================
+
+🔹 4. Correlation Heatmap
+
+Code without Label
+--------------------------
+
+import numpy as np
+
+# Only use numeric columns
+corr = df.select_dtypes(include=np.number).corr()
+
+plt.figure(figsize=(12, 10))
+sns.heatmap(corr, annot=True, fmt=".2f", cmap='coolwarm', square=True)
+plt.title('Feature Correlation Heatmap')
+plt.show()
+-------------------------
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Only numeric columns
+numeric_df = df.select_dtypes(include=np.number)
+
+# Correlation matrix
+corr = numeric_df.corr()
+
+# Heatmap
+plt.figure(figsize=(14, 10))
+sns.heatmap(corr, annot=True, fmt=".2f", cmap='coolwarm', square=True, linewidths=0.5)
+plt.title('Feature Correlation Heatmap')
+plt.tight_layout()
+plt.show()
+================================================
+✅ Insight:
+This shows relationships (e.g., is churn correlated with balance, scores, etc.).
+Focus on how features correlate with Churned row/column.
+
+Values near +1 or -1 indicate strong correlation.
+
+
+=====================================================
+
+🔹 5. Churn vs Monthly Avg Balance (Box Plot)
+code without label
+-------------------------
+
+sns.boxplot(x='Churned', y='Monthly Avg Balance', data=df)
+plt.title('Churn vs Monthly Average Balance')
+plt.xlabel('Churned')
+plt.ylabel('Monthly Avg Balance')
+plt.show()
+-------------------------------
+code with label
+-------------------------------
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(8, 5))
+
+# Set proper hue and remove legend
+ax = sns.boxplot(x='Churned', y='Monthly Avg Balance', hue='Churned',
+                 data=df, palette='Set2', legend=False)
+
+# Optional: Add median labels
+medians = df.groupby('Churned')['Monthly Avg Balance'].median()
+for i, median in enumerate(medians):
+    ax.text(i, median + 500, f'Median: {int(median)}',
+            ha='center', va='bottom', fontsize=10, fontweight='bold', color='black')
+
+plt.title('Churn vs Monthly Average Balance')
+plt.xlabel('Churned (0 = No, 1 = Yes)')
+plt.ylabel('Monthly Avg Balance')
+plt.tight_layout()
+plt.show()
+-------------------------------------------------
+✅ Insight:
+See whether churners maintain higher or lower balances than loyal customers.
+=====================================================================
+Churn by Location, Gender, and Income Bracket
+===================================================
+Churn by Location:
+-------------------
+code with label
+--------------------
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Set style and figure size
+sns.set_style("whitegrid")
+plt.figure(figsize=(8, 5))
+
+# Plot
+ax = sns.countplot(x='Location', hue='Churned', data=df, palette='Set2')
+
+# Add data labels
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f'{int(height)}',
+                (p.get_x() + p.get_width() / 2., height),
+                ha='center', va='bottom',
+                fontsize=9, color='black')
+
+# Titles and labels
+plt.title('Churn by Location')
+plt.xlabel('Location')
+plt.ylabel('Customer Count')
+plt.legend(title='Churned', labels=['No', 'Yes'])
+plt.tight_layout()
+plt.show()
+
+------------------------------------------
+Insight: Locations with taller churned bars have more customers leaving.
+
+✅ Example:
+
+"The South region has the highest number of churned customers, indicating a possible regional issue (e.g., service dissatisfaction, lack of offers)."
+===================================================================
+Churn by Gender
+=======================
+code with lable
+------------------------
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Set figure style and size
+sns.set_style("whitegrid")
+plt.figure(figsize=(6, 4))
+
+# Countplot
+ax = sns.countplot(x='Gender', hue='Churned', data=df, palette='Set2')
+
+# Add data labels to each bar
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f'{int(height)}',
+                (p.get_x() + p.get_width() / 2., height),
+                ha='center', va='bottom',
+                fontsize=9, color='black')
+
+# Titles and layout
+plt.title('Churn by Gender')
+plt.xlabel('Gender')
+plt.ylabel('Customer Count')
+plt.legend(title='Churned', labels=['No', 'Yes'])
+plt.tight_layout()
+plt.show()
+==============================================================
+Churn by Gender
+===============================
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set_style("whitegrid")
+plt.figure(figsize=(6, 4))
+
+# Create the plot and assign it to 'ax' so we can label it
+ax = sns.countplot(x='Gender', hue='Churned', data=df, palette='Set2')
+
+# ✅ Add data labels on top of each bar
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f'{int(height)}',
+                (p.get_x() + p.get_width() / 2., height),
+                ha='center', va='bottom',
+                fontsize=9, color='black')
+
+# Axis titles and legend
+plt.title('Churn by Gender')
+plt.xlabel('Gender')
+plt.ylabel('Customer Count')
+plt.legend(title='Churned', labels=['No', 'Yes'])
+plt.tight_layout()
+plt.show()
+
+=================================================================================
+Churn by Income Bracket
+==================================
+code with data label
+---------------------------
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set_style("whitegrid")
+plt.figure(figsize=(7, 5))
+
+ax = sns.countplot(x='Income Bracket', hue='Churned', data=df, palette='Set2')
+
+# Add data labels
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate(f'{int(height)}',
+                (p.get_x() + p.get_width() / 2., height),
+                ha='center', va='bottom',
+                fontsize=9, color='black')
+
+# Labels and layout
+plt.title('Churn by Income Bracket')
+plt.xlabel('Income Level')
+plt.ylabel('Customer Count')
+plt.legend(title='Churned', labels=['No', 'Yes'])
+plt.tight_layout()
+plt.show()
+
+==============================================================================================
+
+📊 Exploratory Data Analysis (EDA) Summary
+🔍 Objective:
+To uncover patterns, relationships, and churn drivers using visual analysis of key customer attributes.
+
+✅ Key Findings:
+Churn Distribution
+~20% customers have churned → confirms class imbalance that will require attention during modeling.
+
+Age vs Churn
+Median age is slightly higher for churners (~43) vs. non-churners → suggests older customers may be more likely to churn.
+
+Current Plan vs Churn
+Customers on Basic and Silver plans show higher churn. Premium plan users (Gold/Platinum) tend to stay longer.
+
+Location vs Churn
+South and North regions have higher churn counts → indicates potential for regional service gaps or dissatisfaction.
+
+Gender vs Churn
+Slightly higher churn observed among male customers, though distribution is relatively balanced.
+
+Income Bracket vs Churn
+Majority of churners are from Low and Medium income brackets. High-income customers show more loyalty.
+
+Monthly Avg Balance vs Churn
+Churners typically maintain lower average balances, which may reflect disengaged or lower-value users.
+
+Feature Correlation Heatmap
+Repayment Misses, Declined Txns, and Failed Payments show moderate positive correlation with churn.
+
+===================================================================================
+📌 Next Step → Phase 3: Feature Engineering
+===================================================================================
+Encode categorical features
+
+Create time-based features
+
+Aggregate behavioral patterns
+
+Detect & handle outliers
+
+========================================================================================
+Let’s go step by step 👇
+
+🔹 Step 1: Encode Categorical Columns
+We'll use Label Encoding for tree-based models (like XGBoost) and One-Hot Encoding if needed later.
+
+----------------------------------------------------------------
+from sklearn.preprocessing import LabelEncoder
+
+df_fe = df.copy()  # FE = Feature Engineered version
+
+label_cols = df_fe.select_dtypes(include='object').columns.tolist()
+label_cols = [col for col in label_cols if col not in ['CustomerID', 'Onboarding Date']]
+
+label_encoders = {}
+for col in label_cols:
+    le = LabelEncoder()
+    df_fe[col] = le.fit_transform(df_fe[col])
+    label_encoders[col] = le
+	-----------------------------------------------------
+	
+🔹 Step 2: Create Time-Based Features
+We'll use Onboarding Date to derive Customer Tenure in years.
+------------------------------------------------------------------
+
+df_fe['Onboarding Date'] = pd.to_datetime(df_fe['Onboarding Date'])
+
+Optional:
+----------------
+df_fe['Tenure_Years'] = (pd.Timestamp('today') - df_fe['Onboarding Date']).dt.days // 365
+
+
+
+df_fe.drop(columns=['Onboarding Date'], inplace=True)
+
+==================================================================================
+
+🔹 Step 3: Detect and Handle Outliers (e.g., Monthly Balance, Credit Score)
+==================================================================================
+
+📌 IQR Method Example:
+
+Q1 = df_fe['Monthly Avg Balance'].quantile(0.25)
+Q3 = df_fe['Monthly Avg Balance'].quantile(0.75)
+IQR = Q3 - Q1
+
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+# Create outlier flag
+df_fe['Balance_Outlier'] = df_fe['Monthly Avg Balance'].apply(
+    lambda x: 1 if x < lower_bound or x > upper_bound else 0
+)
+🔹 Step 4: Aggregate Behavioral Features
+You already have powerful features like:
+
+App Logins, Web Logins, Session Duration, Time Between Sessions
+
+Loans Accessed, Repayment Misses, Failed Payments
+
+We can combine them to create a few derived insights like:
+
+🧠 Engagement Score (Optional)
+======================================
+df_fe['Engagement_Score'] = (
+    df_fe['App Logins'] + df_fe['Web Logins']
+) / (df_fe['Time Between Sessions'] + 1)
+======================================================
+
+✅ What’s Ready After This Phase:
+Your data is clean, encoded, feature-rich, and outlier-aware
+================================================================
+
+You’re now ready to move to:
+
+Phase 4A: Baseline Modeling (LogReg, Random Forest)
+
+OR perform feature selection if desired
+
+Would you like to:
+
+See what the final df_fe.head() looks like?
+
+Or go directly to Phase 4A: Model Training & Evaluation? 🚀
+====================================================================
+See what the final df_fe.head() looks like?
+
+Great choice, Anusaya! Let’s preview the top rows of your feature-engineered dataset (df_fe) so you know what you're working with before modeling.
+
+✅ Step: View df_fe.head()
+===============================
+
+df_fe.head()
+===================================================================
+
+🔍 You should see:
+All categorical columns encoded as numbers
+(e.g., Gender: 0 = Female, 1 = Male, etc.)
+
+A new column: **Tenure_Years** based on onboarding date
+
+A new outlier flag: **Balance_Outlier** (0 = normal, 1 = outlier)
+
+Optional: **Engagement_Score** if you added it
+
+Original numeric features like Credit Score, App Logins, etc.
+
+📌 Example Preview Output (Sample):
+Age	Gender	Location	Occupation	Credit Score	App Logins	...	Tenure_Years	Balance_Outlier	Churned
+49	2	3	4	792	21	...	5	0	0
+53	1	3	2	356	4	...	13	1	1
+
+=========================================================================
+Clean or drop more columns
+
+
+ChatGPT said:
+Perfect, Anusaya! 🧹 Let’s clean and drop unnecessary or low-impact columns from df_fe to make your model more focused and less noisy.
+
+✅ Step-by-Step Column Review
+🔹 You can safely drop:
+Column Name	Reason
+CustomerID	Just an identifier, not predictive
+Plan History	Text history, not usable in current encoded form
+Payment Mode	Often low variance (if mostly "Auto") unless important to business
+Survey Feedback	High cardinality text — needs NLP to be useful
+Onboarding Date	Already transformed to Tenure_Years
+
+✅ Clean-up Code:
+==========================
+columns_to_drop = ['CustomerID', 'Plan History', 'Payment Mode', 'Survey Feedback']
+
+df_fe.drop(columns=columns_to_drop, inplace=True, errors='ignore')
+========================================================================
+
+✅ Optional: Drop highly correlated features
+You can also drop features that are:
+
+Highly correlated with others
+
+Or redundant
+
+Run this to identify:
+-----------------------------
+
+import numpy as np
+
+# Correlation matrix
+corr = df_fe.corr().abs()
+
+# Upper triangle mask
+upper = corr.where(np.triu(np.ones(corr.shape), k=1).astype(bool))
+
+# Drop features with >0.9 correlation
+to_drop_corr = [column for column in upper.columns if any(upper[column] > 0.9)]
+
+print("Highly correlated columns to consider dropping:", to_drop_corr)
+
+====================================================================================
+If anything obvious shows up (e.g., App Logins vs Web Logins duplication), drop it using:
+=====================================================================================
+
+df_fe.drop(columns=to_drop_corr, inplace=True)
+
+=========================================================================================================
+Excellent, Anusaya! You’ve done the prep perfectly — now let’s carefully analyze the highly correlated features before deciding which ones to drop. We'll do this step-by-step and with logic. 🧠✅
+
+✅ Step 1: View the Highly Correlated Feature Pairs
+Run this to see both sides of each correlated pair:
+
+python
+Copy
+Edit
+import pandas as pd
+import numpy as np
+
+# Correlation matrix
+corr_matrix = df_fe.corr().abs()
+
+# Upper triangle only (no repetition)
+upper = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))
+
+# Filter for correlations > 0.9
+high_corr_pairs = upper.stack().reset_index()
+high_corr_pairs.columns = ['Feature1', 'Feature2', 'Correlation']
+high_corr_pairs = high_corr_pairs[high_corr_pairs['Correlation'] > 0.9]
+
+# Show sorted result
+high_corr_pairs.sort_values(by='Correlation', ascending=False)
+✅ Step 2: Review the Output with Me
+Once you run the above:
+
+You’ll see rows like:
+
+markdown
+Copy
+Edit
+Feature1           Feature2           Correlation
+-------------------------------------------------
+App Logins         Web Logins         0.92
+Credit Count       Debit Count        0.95
+Loans Taken        Repayment Misses   0.91
+📌 Now, we analyze each pair logically:
+
+Are they representing similar user behavior?
+
+Which is more informative or business-relevant?
+
+Which one has more variance?
+=================================================
+Feature1	Feature2	Correlation   (no..........i only see this)
+
+
+ChatGPT said:
+Got it, Anusaya! If you're only seeing:
+
+mathematica
+Copy
+Edit
+Feature1    Feature2    Correlation
+...but no rows below it, that means ✅ no feature pairs in your data are correlated above 0.9 — which is great!
+
+✅ What This Means:
+Your dataset does not have multicollinearity issues
+
+You don’t need to drop any features due to over-correlation
+
+You can move forward confidently with model training
+
+=============================================
+
+✅ Step 3: Decide Which Features to Drop
+Here’s an example guide:
+
+Pair	Keep	Drop	Why?
+App Logins vs Web Logins	App Logins	Web Logins	App use often more meaningful in digital behavior
+Credit Count vs Debit Count	Credit Count	Debit Count	Credit count is more churn-indicative (risk)
+Loans Taken vs Repayment Misses	Repayment Misses	Loans Taken	Misses are more directly tied to churn
+
+Once you decide, run this:
+
+python
+Copy
+Edit
+df_fe.drop(columns=['Web Logins', 'Debit Count', 'Loans Taken'], inplace=True)
+================================================
+ok,then is there need to do ...............Step 3: Decide Which Features to Drop
+Here’s an example guide:
+
+Pair	Keep	Drop	Why?
+App Logins vs Web Logins	App Logins	Web Logins	App use often more meaningful in digital behavior
+Credit Count vs Debit Count	Credit Count	Debit Count	Credit count is more churn-indicative (risk)
+Loans Taken vs Repayment Misses	Repayment Misses	Loans Taken	Misses are more directly tied to churn
+
+Once you decide, run this:
+
+python
+Copy
+Edit
+df_fe.drop(columns=['Web Logins', 'Debit Count', 'Loans Taken'], inplace=True)
+
+
+ChatGPT said:
+Excellent question, Anusaya — and your thinking is absolutely on point! Let’s answer it clearly:
+
+✅ Do You Need to Drop Those Columns Manually?
+❌ No, you don’t have to — because:
+Your correlation analysis showed no pairs > 0.9
+
+That means no multicollinearity is forcing you to drop anything
+
+Your model will benefit from keeping all those features for now
+
+🧠 BUT... Could You Still Drop Them Optionally?
+🔹 Yes, if you want to reduce redundancy or test model performance:
+Here’s when it makes sense:
+
+When to drop	Reason
+You want a leaner model	Fewer features = faster training & easier interpretation
+You notice similar model accuracy without them	It may simplify your SHAP later
+You plan to do feature importance	You can then test whether they're helping
+
+🔄 Recommendation for Now:
+✅ Keep all features:
+No forced drop is needed — just move on to modeling.
+============================================================
+
+✅ Step 4: Confirm It’s Done
+You can check again:
+
+
+print(df_fe.shape)
+print(df_fe.columns)
+===========================================================
+
+
+
+
+
+
+
+print(df_fe.shape)
+print(df_fe.columns)
+
+(10000, 34)
+Index(['Age', 'Gender', 'Location', 'Occupation', 'Income Bracket',
+       'Credit Score', 'Channel', 'App Logins', 'Web Logins',
+       'Session Duration', 'Time Between Sessions', 'Device Type',
+       'OS Version', 'Loans Accessed', 'Savings Accessed',
+       'Card Mgmt Accessed', 'Monthly Avg Balance', 'Debit Count',
+       'Credit Count', 'Loans Taken', 'Repayment Misses', 'Overdraft Events',
+       'Declined Txns', 'Failed Payments', 'Current Plan',
+       'Subscription Renewals', 'Tickets Raised', 'Resolution Time (hrs)',
+       'Sentiment Score', 'NPS Score', 'Churned', 'Tenure_Years',
+       'Balance_Outlier', 'Engagement_Score'],
+      dtype='object')    please check,afetr all cleaning process
+
+
+ChatGPT said:
+Thanks, Anusaya! Let’s carefully review your final df_fe structure after all your cleaning + feature engineering steps ✅
+
+✅ Summary of Your Current Dataset
+🔹 Rows & Columns:
+df_fe.shape → (10000, 34)
+✅ You have 10,000 records and 34 clean, usable features
+
+🔍 What’s Inside the Columns:
+Feature Category	Example Columns	Status
+🧑‍💼 Demographic Info	Age, Gender, Location, Occupation, Income Bracket	✅ Encoded
+💳 Behavioral Data	App Logins, Web Logins, Session Duration, Loans Taken	✅ Complete
+🧠 Derived Features	Tenure_Years, Balance_Outlier, Engagement_Score	✅ Engineered
+📈 Financial Signals	Credit Score, Monthly Avg Balance, Credit Count, Failed Payments	✅ Valid
+📞 Support Indicators	Tickets Raised, Resolution Time (hrs), Sentiment Score	✅ Useful
+🎯 Target	Churned (0 = Not Churned, 1 = Churned)	✅ Final label
+
+✅ Final Checklist Before Modeling
+Task	Done?
+All categorical columns encoded properly	✅
+No null/missing values remaining	✅
+CustomerID, Onboarding Date dropped	✅
+Outlier column added (Balance_Outlier)	✅
+New features created (Engagement, Tenure)	✅
+No multicollinearity above 0.9	✅
+
+✅ You’re 100% ready to begin or continue with model training & evaluation.
+
+=====================================================================================
+
+proceed with Phase 4A: Model Training (Logistic, Random Forest) 🚀
+
+==============================================================================
+
+ Step-by-Step for Phase 4A
+ ✅ Phase 4A: Model Selection (Baseline).
+ ============================================
+ ✅ Phase 4A Roadmap Execution
+ 
+🔹 Step 1: Train-Test Split (Stratified)
+from sklearn.model_selection import train_test_split
+
+X = df_fe.drop(columns=['Churned'])   # Features
+y = df_fe['Churned']                  # Target
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42
+)
+
+=================================================
+Step 2: Train Logistic Regression
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+
+# Split data
+X = df_fe.drop(columns=['Churned'])
+y = df_fe['Churned']
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42
+)
+
+# Create pipeline: scaling + logistic regression
+log_reg_pipeline = Pipeline([
+    ('scaler', StandardScaler()),
+    ('logreg', LogisticRegression(class_weight='balanced', max_iter=1000, random_state=42))
+])
+
+# Fit model
+log_reg_pipeline.fit(X_train, y_train)
+
+# Predict
+y_pred_log = log_reg_pipeline.predict(X_test)
+
+# Evaluate
+def evaluate_model(name, y_true, y_pred):
+    print(f"\n📊 Model Performance: {name}")
+    print("Accuracy:      ", round(accuracy_score(y_true, y_pred), 3))
+    print("Precision:     ", round(precision_score(y_true, y_pred), 3))
+    print("Recall:        ", round(recall_score(y_true, y_pred), 3))
+    print("F1 Score:      ", round(f1_score(y_true, y_pred), 3))
+    print("ROC-AUC Score: ", round(roc_auc_score(y_true, y_pred), 3))
+
+evaluate_model("Logistic Regression", y_test, y_pred_log)
+------------------------------------------------------------
+
+📊 Model Performance: Logistic Regression
+Accuracy:       0.87
+Precision:      0.623
+Recall:         0.847
+F1 Score:       0.718
+ROC-AUC Score:  0.861
+----------------------------------
+That's an excellent result, Anusaya! 🙌
+Let’s break down what these numbers mean for your churn prediction — and why your logistic regression is doing great for a baseline model.
+
+📊 Logistic Regression Performance Summary
+Metric	Value	What It Means
+Accuracy	0.87	87% of predictions (churn + non-churn) are correct overall
+Precision	0.623	When it predicts churn, it's correct ~62.3% of the time
+Recall	0.847	It correctly catches ~84.7% of actual churners (great for retention)
+F1 Score	0.718	Balanced score between precision and recall
+ROC-AUC	0.861	Very strong ability to separate churn vs non-churn customers
+
+✅ Key Insight:
+Your model is doing a great job at identifying churners (high recall) — which is exactly what you want in customer retention!
+
+A slightly lower precision is acceptable here because missing a churner is worse than wrongly flagging a loyal customer.
+
+
+=================================================
+
+
+🔹 3. Train Random Forest
+#Train & Compare Random Forest
+from sklearn.ensemble import RandomForestClassifier
+
+rf = RandomForestClassifier(n_estimators=100, class_weight='balanced', random_state=42)
+rf.fit(X_train, y_train)
+y_pred_rf = rf.predict(X_test)
+
+evaluate_model("Random Forest", y_test, y_pred_rf)
+-----------------------------------------------------
+output =
+
+📊 Model Performance: Random Forest
+Accuracy:       0.87
+Precision:      0.87
+Recall:         0.393
+F1 Score:       0.541
+ROC-AUC Score:  0.689
+=====================================================
+
+🔍 Model Comparison Summary
+----------------------------------
+
+Metric	        Logistic Regression	        Random Forest	     🔍 Best for...
+Accuracy	           0.87	                   0.87	             Both are equal ✅
+Precision	          0.623	                   0.87	             Random Forest (less false positives)
+Recall                0.847	                   0.393	         Logistic Regression wins 🏆
+F1 Score	          0.718	                   0.541	         Logistic Regression wins
+ROC-AUC	              0.861	                   0.689	         Logistic Regression wins 🏆
+
+==============================================================
+✅ Phase 4B: Advanced Modeling Roadmap
+==============================================================
+
+🔹 Step 1: Train XGBoost Model
+---------------------------------
+!pip install xgboost
+
+💡 After installing:
+You can then safely import and use XGBoost like this:
+
+from xgboost import XGBClassifier
+
+----------------------------------
+xgb_model = XGBClassifier(
+    objective='binary:logistic',
+    eval_metric='logloss',
+    scale_pos_weight=4,
+    random_state=42
+)
+
+xgb_model.fit(X_train, y_train)
+y_pred_xgb = xgb_model.predict(X_test)
+evaluate_model("XGBoost", y_test, y_pred_xgb)
+
+----------------------------------
+=======================================
+📊 Your Model Comparison Table
+Metric	         Logistic Regression	  Random Forest	         XGBoost	       ✅ Best So Far
+Accuracy	            0.87	             0.87	               0.884	       ✅ XGBoost
+Precision	            0.623	             0.87	               0.706	       Random Forest
+Recall	                0.847	             0.393	               0.704	       Logistic Reg.
+F1 Score	            0.718	             0.541	               0.705	       Logistic Reg. ≈ XGB
+ROC-AUC	                0.861	             0.689	               0.816	       Logistic Reg.
+
+🔍 Key Takeaways:
+✅ XGBoost is the most balanced overall: good accuracy, precision, and decent recall
+
+💡 Logistic Regression still has the best recall (important if you want to catch most churners)
+
+❌ Random Forest underperforms due to low recall
+
+🏆 Decision:
+If your priority is...	Choose this model
+Business value(catch more churners)	                               ✅ Logistic Regression
+Balanced performance (F1, AUC)	                                   ✅ XGBoost (best tradeoff)
+Interpretability & speed	                                       ✅ Logistic Regression
+
+=====================================================================================
+
+✅ Phase 5: Interpretability & Insights
+======================================================================================
+
+Using SHAP (SHapley Additive exPlanations) to understand why customers churn.
+
+🎯 What You’ll Achieve:
+Goal	How
+✅ Identify top churn drivers	SHAP feature importance
+✅ Explain predictions in plain business terms	SHAP summary and force plots
+✅ Build trust in your model	Transparency in decisions
+
+🧠 Step-by-Step SHAP Implementation
+We’ll apply SHAP to your chosen model → ✅ Logistic Regression or ✅ XGBoost
+
+Let’s proceed with XGBoost, since it works great with SHAP and offers rich visualizations.
+---------------------------------------------------------------------------------------
+
+✅ Step 1: Install SHAP (if not done)
+!pip install shap
+
+--------------------------------------------
+
+✅ Step 2: Import and Initialize SHAP
+
+import shap
+
+# Create explainer for XGBoost model
+explainer = shap.Explainer(xgb_model)
+
+# Get SHAP values for the test set
+shap_values = explainer(X_test)
+
+-------------------------------------------------
+
+✅ Step 3: Plot Summary of Churn Drivers
+
+shap.summary_plot(shap_values, X_test, plot_type="bar")
+
+-----------------------------------------------------
+This tells you:
+
+Direction of impact (positive = pushes toward churn)
+
+Value ranges that are risky
+
+------------------------------------------------------------
+✅ Step 5: Explain Individual Customers (Force Plot)
+
+# Select an index of a churned customer from test set
+i = list(y_test[y_test == 1].index)[0]  # first churned customer
+shap.plots.waterfall(shap_values[i], max_display=10)
+
+-------------------------------------------------------------
+
+💬 Example Insight (business language):
+"Customers with low sentiment score, high failed payments, and short tenure are at highest risk of churning."
+
+=========================================================================================================================
+✅ Phase 5 Continued: Explain Predictions in Business Terms
+
+================================================================
+Let’s turn those SHAP visual insights into plain language explanations for a presentation or business report.
+
+📌 Global SHAP Summary (Top Churn Drivers)
+From your summary bar chart, here’s how you explain the top features:
+--------------------------------------------------------------------------
+
+SHAP Feature	                              Business Explanation
+App Logins	                      Customers who use the app less frequently are more likely to churn. Low digital engagement = low loyalty.
+Loans Accessed	                  Users not using core banking features like loans may be less financially engaged and more likely to leave.
+Loans Taken	                      Customers who haven’t taken any loans show less product adoption, increasing churn risk.
+Sentiment Score	                  Lower sentiment = negative customer experience, leading to churn.
+Web Logins	                      Fewer logins indicate less interaction with the platform.
+Monthly Avg Balance	              Customers with lower balances may feel undervalued or underserved.
+Declined Txns	                  High decline rates frustrate customers, increasing churn.
+Overdraft Events	              Unexpected overdrafts can erode trust and trigger churn.
+Tickets Raised	                  More support tickets = more problems = higher churn likelihood.
+Engagement Score	              A calculated score of digital activity — lower = higher churn risk.
+
+-----------------------------------------------------------------------------------
+
+💬 Business Summary Example:
+“The model highlights that digital inactivity (low app/web logins), negative experience (sentiment, tickets), and low financial engagement (no loans, low balance) are the biggest drivers of churn. Customers who feel disconnected, frustrated, or unserved are most at risk. These insights help prioritize retention efforts for disengaged or unhappy users.”
+
+
+-------------------------------------------------------------------------------------------------------------------
+📊 Optional: Export SHAP Summary for Business Teams
+=======================================================
+
+You can create a simple table like this:
+
+2️⃣ 📊 SHAP DataFrame + CSV Export
+=====================================================
+This is the tabular version of that same summary:
+
+shap_df = pd.DataFrame({
+    'Feature': X_test.columns,
+    'Mean_Impact': shap_values.abs.mean(0).values
+})
+
+===================================================================
+✅ The Difference Between:
+1️⃣ 📌 Global SHAP Summary (Bar Chart)
+This is the visual explanation you already saw:
+
+python
+Copy
+Edit
+shap.summary_plot(shap_values, X_test, plot_type="bar")
+🔍 What it gives:
+Top features ranked by average SHAP impact
+
+Visual intuition for stakeholders
+
+It’s based on the same data as the .mean(0) calculation below
+
+2️⃣ 📊 SHAP DataFrame + CSV Export
+This is the tabular version of that same summary:
+
+python
+Copy
+Edit
+shap_df = pd.DataFrame({
+    'Feature': X_test.columns,
+    'Mean_Impact': shap_values.abs.mean(0).values
+})
+------------------------------------------------------------
+🔍 What it gives:
+Same impact values (SHAP mean per feature)
+
+Exportable format for Power BI, Excel, PDF reports
+
+Easy to sort, filter, visualize or display in dashboards
+
+✅ Summary of the Difference:
+Type	                                          What it Shows	                                     Best For
+shap.summary_plot(...bar)	        Visual bar chart of global feature impact	            Business slides, presentations
+shap_df.to_csv(...)	                Data table with impact values	                        Reporting, Power BI, Excel export
+
+----------------------------------------------------------------
+
+🧠 Example Use Case:
+---------------------------------
+
+Goal                                                    Use This
+Convince leadership visually	             📊 Bar chart (summary_plot)
+Send detailed insights to team	             🧾 CSV file from shap_df
+Build churn dashboard in Power BI	         ✅ Top_Churn_Drivers.csv
+
+So both are based on the same data, but:
+
+One is visual (summary_plot)
+
+One is tabular (shap_df.to_csv)
+
+=====================================================================================================
+✅ Phase 6A: Retention Strategy Design
+This is where your churn prediction becomes actionable business value 💼✨
+
+🎯 Goal of This Phase:
+Turn your churn model outputs into a retention playbook:
+
+🎯 Segment customers by churn risk
+
+🎁 Map offers or actions to those segments
+
+🔄 Build logic that recommends what to do next
+
+----------------------------------------------------
+✅ Step-by-Step Plan
+
+🔹 Step 1: Get Churn Probabilities
+------------------------------------------
+
+Use XGBoost to get churn probability scores:
+
+
+y_proba_xgb = xgb_model.predict_proba(X_test)[:, 1]
+This gives a score between 0.0 – 1.0 for every customer.
+
+---------------------------------------------
+
+🔹 Step 2: Segment Customers
+Let’s create 3 churn risk groups:
+
+
+risk_segment = pd.cut(y_proba_xgb,
+                      bins=[0, 0.3, 0.6, 1],
+                      labels=['Low Risk', 'Medium Risk', 'High Risk'])
+
+# Add to output DataFrame
+results = X_test.copy()
+results['Churn_Probability'] = y_proba_xgb
+results['Risk_Segment'] = risk_segment
+
+-------------------------------------------------
+
+🔹 Step 3: Map Rule-Based Retention Offers
+You can use simple if-else logic or a lookup:
+
+
+def recommend_action(risk):
+    if risk == 'High Risk':
+        return 'Call customer + offer cashback/upgrade'
+    elif risk == 'Medium Risk':
+        return 'Send personalized offer + follow-up email'
+    else:
+        return 'Send thank-you email + loyalty points'
+
+results['Recommended_Action'] = results['Risk_Segment'].apply(recommend_action)
+
+==============================================================================================
+
+✅ To View the Output:
+-----------------------------
+
+Use this code to display a few sample rows from your results DataFrame:
+
+results[['Churn_Probability', 'Risk_Segment', 'Recommended_Action']].head(10)
+
+=================================================================================================
+
+🧾 Optional: See Full Table with Features
+-------------------------------------------------
+
+If you want to include some of the original customer features too:
+
+
+results[['App Logins', 'Sentiment Score', 'Churn_Probability', 'Risk_Segment', 'Recommended_Action
+
+===================================================================================================
+
+📤 To Export:
+If you want to use this for Power BI or business review:
+
+results.to_csv("Retention_Recommendation.csv", index=False)
+
+===================================================================================================
+
+✅ Phase 6B: Streamlit App & API Deployment
+===================================================================================================
+
+This is where your churn model becomes interactive and usable by others via:
+
+📊 A Streamlit Dashboard
+
+🌐 (Optional) A FastAPI REST API for real-time predictions
+
+🧭 Roadmap for Phase 6B
+Step	              Task	                                             Tools
+1️⃣	        Build basic Streamlit app with churn predictions	      streamlit
+2️⃣	        Show churn risk, risk segment & recommended action	      Your results table
+3️⃣	       (Optional) Add FastAPI endpoint for real-time scoring	 fastapi, uvicorn
+
+--------------------------------------------------------------------------------------------------
+
+✅ Step 1: Basic Streamlit Setup
+--------------------------------------------------------------------------------------------------
+
+🔹 A. Install Streamlit
+In your terminal or notebook:
+
+
+!pip install streamlit
+----------------------------------------------------------------------------------------------------
+
+
+
+Export the file from your notebook first
+=====================================================
+
+In your Jupyter Notebook, run this code to export your final recommendations:
+---------------------------------------------------------------
+
+results.to_csv("Retention_Recommendation.csv", index=False)
+
+🔁 This will save the file to your current working directory — the same place where your churn_app.py is (or should be).
+
+----------------------------------------------------------------
+✅ Update this line in churn_app.py:
+----------------------------------------------------------------
+
+df = pd.read_csv("F:/Quantumsoft Tech/Python/Project/Dummy/Retention_Recommendation.csv")
+
+✅ This will load the file from your correct location (make sure the file ends with .csv — if not, rename it accordingly).
+
+-------------------------------------------------------------------------------
+(code not run)
+
+💡 Full working snippet for your Streamlit file:
+
+import streamlit as st
+import pandas as pd
+
+# ✅ Load your churn prediction file from the correct path
+df = pd.read_csv("F:/Quantumsoft Tech/Python/Project/Dummy/Retention_Recommendation.csv")
+
+st.title("📉 Customer Churn Risk Dashboard")
+
+st.write("Explore churn predictions and retention strategy for each customer.")
+
+# Display top records
+st.dataframe(df.head(10))
+
+# Filter by risk level
+risk_level = st.selectbox("Filter by Risk Segment:", options=df['Risk_Segment'].unique())
+filtered = df[df['Risk_Segment'] == risk_level]
+
+st.write(f"Customers in **{risk_level}** segment:")
+st.dataframe(filtered[['Churn_Probability', 'Risk_Segment', 'Recommended_Action']])
+
+---------------------------------------------------------------------------------
+===========================================================================================
+when we are using steamlit app,at that time, we can't show all the features,for the pridication,so for that we have need to select some features on priority & then the model again, & we go for the stramlight app
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ChatGPT said:
+Exactly, Anusaya — you're absolutely right ✅
+Let me break it down and confirm your understanding with more clarity:
+
+💡 When Building a Streamlit App for Prediction:
+We typically don’t include all features in the UI. Here's why:
+
+✅ Why We Use Only Selected Features in the App
+--------------------------------------------------------------------
+
+Reason	Explanation
+---------------------
+🎯 Simplicity	You don’t want to confuse the user with 30+ inputs.
+📈 Prioritized Inputs	You only include the top influential drivers (e.g., from SHAP).
+🧠 Business-Driven	Only the inputs business teams understand and can act on.
+⚡ Speed	Fewer inputs = faster, cleaner form in Streamlit.
+
+-----------------------------------------------------------------------
+
+✅ Recommended Approach:
+
+--------------------------------------
+
+🔹 Step 1: Use SHAP or feature importance
+You've already done this beautifully — e.g., top features:
+
+✅ SHAP Top Features (by importance):
+App Logins
+
+Loans Accessed
+
+Loans Taken
+
+Sentiment Score
+
+Web Logins 
+
+Monthly Avg Balance
+
+----------------------------------------
+
+🔹 Step 2: Create a form in Streamlit with only top N inputs
+Example: only 5–7 fields
+
+app_logins = st.number_input("App Logins")
+loans_accessed = st.number_input("Loans Accessed")
+loans_taken = st.number_input("Loans Taken")
+sentiment_score = st.slider("Sentiment Score", 0.0, 1.0)
+web_logins = st.number_input("Web Logins")
+monthly_balance = st.number_input("Monthly Avg Balance")
+
+
+----------------------------------------------------
+
+🔹 Step 3: Predict using a model trained on those selected features
+Before creating the Streamlit app, you should:
+
+✅ Train a new model using only the selected subset of features
+
+✅ Save it (e.g., with joblib)
+
+✅ Load it inside the Streamlit app for prediction
+
+
+from joblib import load
+model = load('xgb_selected_features.joblib')
+-----------------------------------------------------------
+
+🔹 Step 4: Use input data from Streamlit to predict:
+
+import numpy as np
+input_data = np.array([[app_logins, sentiment, monthly_balance, declined_txns, tickets]])
+prediction = model.predict(input_data)
+---------------------------------------------
+
+✅ Summary:
+Step	                               Status
+Identify top features	          ✅ Done via SHAP
+Train model on those	          🔜 You need to do
+Build UI using top inputs	      ✅ Ready
+Predict & show output	          🔜 In Streamlit
+
+-------------------------------------------
+
+Let me know if you'd like help:
+
+Selecting the exact 5–7 features
+
+Training the new model for the app
+
+Writing the full prediction code block in Streamlit
+
+You're building this like a pro, Anusaya! 🚀
+
+==========================================================================
+==========================================================================
+
+🔧 Train a new model on these 6 SHAP-ranked features   ................guide with this 1st
+
+
+ChatGPT said:
+Perfect, Anusaya! Let's walk through the complete process to train a new model using only the top 6 SHAP-ranked features for churn prediction.
+
+---------------------------------------------------------------------------
+
+✅ Step-by-Step Guide: Train a Clean XGBoost Model with 6 Features
+
+🔹 Step 1: Define the 6 features
+From your SHAP chart:
+
+
+selected_features = [
+    'App Logins',
+    'Loans Accessed',
+    'Loans Taken',
+    'Sentiment Score',
+    'Web Logins',
+    'Monthly Avg Balance'
+]
+
+-----------------------------------
+
+🔹 Step 2: Create X and y
+
+X_selected = df_fe[selected_features]
+y = df_fe['Churned']
+
+------------------------------------------
+
+🔹 Step 3: Train/Test Split (stratified)
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X_selected, y, test_size=0.2, stratify=y, random_state=42
+)
+
+-------------------------------------------
+
+🔹 Step 4: Train XGBoost Model (on selected features)
+
+from xgboost import XGBClassifier
+
+xgb_selected = XGBClassifier(
+    objective='binary:logistic',
+    eval_metric='logloss',
+    scale_pos_weight=4,
+    random_state=42
+)
+
+xgb_selected.fit(X_train, y_train)
+
+-----------------------------------
+
+🔹 Step 5: Evaluate Performance
+
+from sklearn.metrics import classification_report, roc_auc_score
+
+y_pred = xgb_selected.predict(X_test)
+print(classification_report(y_test, y_pred))
+print("ROC AUC:", roc_auc_score(y_test, y_pred))
+
+-------------------------------------
+
+🔹 Step 6 (Optional): Save Model for Streamlit
+
+import joblib
+joblib.dump(xgb_selected, 'xgb_model_selected_features.joblib')
+
+-------------------------------------
+
+Awesome, Anusaya! 🎉
+Below is your complete churn_app.py file — designed for your trained XGBoost model with 6 SHAP-ranked features and real-time prediction.
+
+--------------------------------------------------------
+
+✅ churn_app.py — Ready for Streamlit
+
+import streamlit as st
+import numpy as np
+import joblib
+
+# 🔄 Load the trained model
+model = joblib.load("xgb_model_selected_features.joblib")
+
+st.set_page_config(page_title="Churn Predictor", layout="centered")
+st.title("📉 Customer Churn Risk Predictor")
+st.write("Enter key behavior metrics to predict churn risk and get retention suggestions.")
+
+# 📋 Input form
+app_logins = st.number_input("App Logins", min_value=0)
+loans_accessed = st.number_input("Loans Accessed", min_value=0)
+loans_taken = st.number_input("Loans Taken", min_value=0)
+sentiment_score = st.slider("Sentiment Score", 0.0, 1.0, 0.5)
+web_logins = st.number_input("Web Logins", min_value=0)
+monthly_balance = st.number_input("Monthly Avg Balance", min_value=0.0)
+
+if st.button("🔍 Predict Churn"):
+    # 🧠 Prepare input for prediction
+    input_data = np.array([[app_logins, loans_accessed, loans_taken, sentiment_score, web_logins, monthly_balance]])
+    churn_prob = model.predict_proba(input_data)[0][1]
+
+    # 📊 Display probability
+    st.metric(label="Predicted Churn Probability", value=f"{churn_prob:.2%}")
+
+    # 🧠 Risk Segment Logic
+    if churn_prob >= 0.6:
+        risk = "High Risk"
+        action = "📞 Call customer + Offer cashback or upgrade"
+    elif churn_prob >= 0.3:
+        risk = "Medium Risk"
+        action = "📧 Send personalized email + offer"
+    else:
+        risk = "Low Risk"
+        action = "💌 Send thank-you email + loyalty points"
+
+    # 📢 Display result
+    st.success(f"🛡️ Risk Segment: **{risk}**")
+    st.info(f"📌 Recommended Action: **{action}**")
+	
+-----------------------------------------------------------------------------------------------------------	
+	
+🟢 How to Run It:
+Save the above code as:
+
+churn_app.py
+
+----------------------------------------
+
+Move it to the folder:
+
+
+F:/Quantumsoft Tech/Python/Project/Dummy/
+
+--------------------------------------------
+
+Open Anaconda Prompt and run:
+
+-------------------------------------------
+
+cd "F:/Quantumsoft Tech/Python/Project/Dummy/"
+
+-------------------------------------------
+
+streamlit run churn_app.py
+
+🧪 Example Inputs to Try:
+
+Feature         	Example
+App Logins	           8
+Loans Accessed	       2
+Loans Taken	           1
+Sentiment Score	      0.4
+Web Logins	           5
+Monthly Avg Balance	  18000
+
+Let me know once it's running — I can also help you add:
+
+📈 Pie chart of risk segments
+
+⏬ Download button for predictions
+
+🌐 API version (FastAPI) if needed
+
+You're almost production-ready. Great job! 🚀
+
+=======================================================================
+==========================================================================
+
+✅ churn_app.py — Ready for Streamlit
+
+import streamlit as st
+import numpy as np
+import joblib
+
+# 🔄 Load the trained model
+model = joblib.load("xgb_model_selected_features.joblib")
+
+st.set_page_config(page_title="Churn Predictor", layout="centered")
+st.title("📉 Customer Churn Risk Predictor")
+st.write("Enter key behavior metrics to predict churn risk and get retention suggestions.")
+
+# 📋 Input form
+app_logins = st.number_input("App Logins", min_value=0)
+loans_accessed = st.number_input("Loans Accessed", min_value=0)
+loans_taken = st.number_input("Loans Taken", min_value=0)
+sentiment_score = st.slider("Sentiment Score", 0.0, 1.0, 0.5)
+web_logins = st.number_input("Web Logins", min_value=0)
+monthly_balance = st.number_input("Monthly Avg Balance", min_value=0.0)
+
+if st.button("🔍 Predict Churn"):
+    # 🧠 Prepare input for prediction
+    input_data = np.array([[app_logins, loans_accessed, loans_taken, sentiment_score, web_logins, monthly_balance]])
+    churn_prob = model.predict_proba(input_data)[0][1]
+
+    # 📊 Display probability
+    st.metric(label="Predicted Churn Probability", value=f"{churn_prob:.2%}")
+
+    # 🧠 Risk Segment Logic
+    if churn_prob >= 0.6:
+        risk = "High Risk"
+        action = "📞 Call customer + Offer cashback or upgrade"
+    elif churn_prob >= 0.3:
+        risk = "Medium Risk"
+        action = "📧 Send personalized email + offer"
+    else:
+        risk = "Low Risk"
+        action = "💌 Send thank-you email + loyalty points"
+
+    # 📢 Display result
+    st.success(f"🛡️ Risk Segment: **{risk}**")
+    st.info(f"📌 Recommended Action: **{action}**")
+
+========================================================================================
+
+THEN .................SAVE ABOVE INTO VS FILE (IN MY CASE IT SAVES,AUTOMATICALLY IN VS CODE,B'COZ I HAVE ALLREADY INSTALLED VS CODE)
+
+-----------------------------------------------------------------------------------------
+
+Save the above code as:
+
+
+churn_app.py 
+
+========================================================
+🔹 Step 2: Open Terminal in VS Code
+--------------------------------------------------------
+
+Go to VS Code top menu ➝ click Terminal ➝ New Terminal
+
+In the terminal at the bottom, make sure you're in the correct folder:
+
+F:/Quantumsoft Tech/Python/Project/Dummy/CPRS
+
+----------------------------------------------------
+
+✅ Step-by-Step (with Your Path)
+Open Anaconda Prompt or VS Code Terminal
+
+Type this command to go to your folder:
+
+cd "F:/Quantumsoft Tech/Python/Project/Dummy/CPRS"
+------------------------------------------------------
+✅ Now Run Your Streamlit App (Final Steps)
+
+🔹 Step 1: Open Terminal in VS Code
+--------------------------------------------
+From the top menu, click:
+
+
+Terminal → New Terminal
+
+A terminal panel will open at the bottom.
+
+---------------------------------------------------
+
+🔹 Step 2: Navigate to Your File Folder (if not already)
+In the terminal, type this:
+
+
+cd "F:/Quantumsoft Tech/Python/Project/Dummy/CPRS"
+
+✅ This ensures you're in the same directory where churn_app.py and the .joblib model exist.
+
+---------------------------------------------------
+
+🔹 Step 3: Run the Streamlit App
+Now type:
+
+streamlit run churn_app.py
+
+Then press Enter ✅
+
+----------------------------------------------------------
+===========================================================
+i got an error
+--------------------
+
+PS F:\Quantumsoft Tech\Python\Project\Dummy> cd "F:/Quantumsoft Tech/Python/Project/Dummy/CPRS"
+>>
+PS F:\Quantumsoft Tech\Python\Project\Dummy\CPRS> streamlit run churn_app.py
+>>
+streamlit : The term 'streamlit' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path 
+is correct and try again.   
+At line:1 char:1
++ streamlit run churn_app.py
++ ~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (streamlit:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS F:\Quantumsoft Tech\Python\Project\Dummy\CPRS> 
+
+-------------------------------------------------------------
+
+Solutions :-
+-------------
+
+Thanks for sharing, Anusaya! The error:
+
+
+streamlit : The term 'streamlit' is not recognized...
+
+means that Streamlit is not available in your current terminal session. Don’t worry — here’s how to fix it:
+
+✅ Step-by-Step Fix
+-------------------------
+
+🔹 Step 1: Check if Streamlit is Installed
+First, verify it’s installed in your environment:
+
+
+pip show streamlit
+
+If it shows "WARNING: Package(s) not found", you’ll need to install it.
+
+------------------------------------------------------------------------
+
+🔹 Step 2: Install Streamlit
+Run this in your terminal:
+
+
+pip install streamlit
+
+If you're using Anaconda, and want to install it to your base env:
+
+
+conda install -c conda-forge streamlit
+
+-----------------------------------------------------------------------
+
+🔹 Step 3: Close & Reopen Terminal (or VS Code)
+After installation:
+
+Close the terminal
+
+Reopen VS Code
+
+Go to your folder path again:
+
+
+cd "F:/Quantumsoft Tech/Python/Project/Dummy/CPRS"
+-----------------------------------------------------------------------
+🔹 Step 4: Run the Streamlit App
+Once done:
+
+
+streamlit run churn_app.py
+
+This time, it should launch your web app in the browser.
+
+------------------------------------------------------------------------
+
+>>
+
+      Welcome to Streamlit!
+
+      If you'd like to receive helpful onboarding emails, news, offers, promotions,
+      and the occasional swag, please enter your email address below. Otherwise,   
+      leave this field blank.
+
+
+ChatGPT said:
+🎉 Great news, Anusaya — this means Streamlit has successfully launched for the first time on your system!
+
+✅ What to Do Now:
+You’ll see this message:
+
+
+Welcome to Streamlit!
+
+If you'd like to receive helpful onboarding emails, news, offers, ...
+This is optional. You have two choices:
+
+1️⃣ Just press Enter to skip:
+--------------------------------------------------------------
+
+Press [Enter]
+You’ll move on to your app launch — no email needed.
+----------------------------------------------------------------
+2️⃣ Or enter your email (if you want updates):
+
+you@example.com
+----------------------------------------------------------------
+Then press Enter.
+
+✅ After That:
+Streamlit will display:
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://localhost:8501
+🟢 Your app will open automatically in the browser.
+
+If not, just open http://localhost:8501 in your browser manually.
+
+Let me know once it loads or if anything doesn't appear. You're 99% there!
+--------------------------------------------------------------------------------
+then,i got the error
+=================================================================================
+You said:
+PS F:\Quantumsoft Tech\Python\Project\Dummy\CPRS> cd "F:/Quantumsoft Tech/Python/Project/Dummy/CPRS"
+>>
+PS F:\Quantumsoft Tech\Python\Project\Dummy\CPRS> streamlit run churn_app.py
+>>
+
+      Welcome to Streamlit!
+
+      If you'd like to receive helpful onboarding emails, news, offers, promotions,
+      and the occasional swag, please enter your email address below. Otherwise,   
+      leave this field blank.
+
+      Email: 
+
+  You can find our privacy policy at https://streamlit.io/privacy-policy
+
+  Summary:
+  - This open source library collects usage statistics.
+  - We cannot see and do not store information contained inside Streamlit apps,
+    such as text, charts, images, etc.
+  - Telemetry data is stored in servers in the United States.
+  - If you'd like to opt out, add the following to %userprofile%/.streamlit/config.toml,
+    creating that file if necessary:
+
+    [browser]
+    gatherUsageStats = false
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.1.100:8501
+
+2025-06-22 16:20:19.449 Uncaught app execution
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\streamlit\runtime\scriptrunner\exec_code.py", line 128, in exec_func_with_error_handling
+    result = func()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\streamlit\runtime\scriptrunner\script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Quantumsoft Tech\Python\Project\Dummy\CPRS\churn_app.py", line 6, in <module>
+    model = joblib.load("xgb_model_selected_features.joblib")
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'xgb_model_selected_features.joblib'
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Solution for the errors :-
+=============================================================================================================
+ChatGPT said:
+Thanks for sharing the full output — you're almost done!
+✅ Streamlit launched successfully and the app tried to load.
+
+But you're getting this final error:
+
+
+FileNotFoundError: [Errno 2] No such file or directory: 'xgb_model_selected_features.joblib'
+
+⚠️ Problem:
+Your app is trying to load this file:
+
+
+joblib.load("xgb_model_selected_features.joblib")
+
+…but the file doesn’t exist in the current folder:
+
+F:/Quantumsoft Tech/Python/Project/Dummy/CPRS
+
+
+✅ Solution (2 ways):(i use 1st optional)
+✅ Option 1: Move the model file into the current folder
+Go to the folder where xgb_model_selected_features.joblib was saved (probably from your notebook).
+
+Copy or move that file into this folder:
+
+F:/Quantumsoft Tech/Python/Project/Dummy/CPRS
+
+--------------------------------------------------------------------------------------
+✅ Option 2: Use full path to load the model
+Edit the line in your churn_app.py:
+
+
+model = joblib.load("xgb_model_selected_features.joblib")
+
+Change it to:
+
+
+model = joblib.load("F:/Quantumsoft Tech/Python/Project/Dummy/xgb_model_selected_features.joblib")
+
+=========================================================================================================
+
+✅ Then:
+Save the Python file (Ctrl+S)
+
+In your terminal, run again:
+
+
+streamlit run churn_app.py
+
+===========================================================================================================
+i got an error :-
+===========================================================================================================
+
+PS F:\Quantumsoft Tech\Python\Project\Dummy\CPRS> streamlit run churn_app.py
+>>
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8502
+  Network URL: http://192.168.1.100:8502
+
+2025-06-22 16:24:40.647 Uncaught app execution
+Traceback (most recent call last):
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\streamlit\runtime\scriptrunner\exec_code.py", line 128, in exec_func_with_error_handling
+    result = func()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\streamlit\runtime\scriptrunner\script_runner.py", line 669, in code_to_exec
+    exec(code, module.__dict__)  # noqa: S102
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\Quantumsoft Tech\Python\Project\Dummy\CPRS\churn_app.py", line 6, in <module>
+    model = joblib.load("xgb_model_selected_features.joblib")
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\numpy_pickle.py", line 749, in load
+    obj = _unpickle(
+        fobj,
+    ...<2 lines>...
+        mmap_mode=validated_mmap_mode,
+    )
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\numpy_pickle.py", line 626, in _unpickle
+    obj = unpickler.load()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\pickle.py", line 1256, in load
+    dispatch[key[0]](self)
+    ~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\pickle.py", line 1581, in load_stack_global
+    self.append(self.find_class(module, name))
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\pickle.py", line 1622, in find_class
+    __import__(module, level=0)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'xgboost'
+
+
+==========================================================================================
+Solution over the error :-
+-----------------------------------------------
+
+Thanks for the update, Anusaya! You're almost there — the error you're getting now is very clear:
+
+
+ModuleNotFoundError: No module named 'xgboost'
+-----------------------------------------------------------
+
+✅ Solution:
+You just need to install the xgboost library into your Python environment.
+-----------------------------------------------------------
+
+✅ Step-by-Step Fix:
+In the same terminal (PowerShell at bottom of VS Code), run:
+
+pip install xgboost
+--------------------------------------------------------------
+
+Once installed:
+
+✅ Re-run your Streamlit app:
+
+streamlit run churn_app.py
+---------------------------------------------------------------
+
+🎉 Amazing work, Anusaya!
+
+Your Streamlit Churn Predictor App is up and running successfully with:
+
+✅ User input form for top SHAP features
+
+✅ Predicted churn probability (e.g., 88.13%)
+
+✅ Risk segment classification (High Risk)
+
+✅ Retention recommendation logic applied
+
+🔍 What’s Happening in Your App:
+Based on the inputs:
+
+Sentiment Score = 0.63
+
+App/Web Logins, Loans Taken, etc.
+
+The model predicted a churn probability of 88.13%, which puts this customer in the High Risk segment.
+
+It then gave a recommended action, such as:
+
+"📞 Call customer + Offer cashback or upgrade"
+
+✅ Next Optional Enhancements (Only if You Want):
+🖼️ Add branding
+Add logo or theme using st.image() and st.set_page_config.
+
+📈 History tracking
+Store predictions in a file (CSV or SQLite) to track behavior over time.
+
+🌍 Deploy online
+Using platforms like Streamlit Cloud, Hugging Face, or a private server.
+
+Would you like to:
+
+Export this as a PDF or presentation?
+
+Add a download button for the results?
+
+Or keep this version as your final app?
+
+================================================================================================
+
+i want do it more attractive,with organization logo,with suitable title,with professional smoth colour
+-------------------------------------------------------------------------------------------------------
+
+
+ChatGPT said:
+That's a great idea, Anusaya! Let's enhance your Streamlit app with:
+
+✅ 1. Add Organization Logo
+Place your logo file (e.g. logo.png) in the same folder (CPRS) and add this at the top:
+
+
+st.set_page_config(page_title="Customer Churn Predictor", page_icon="📊", layout="centered")
+
+---------------------------------------------------------------------------------------------
+
+# Display your logo
+-------------------------------------
+st.image("logo.png", width=120)  # Adjust width as needed
+---------------------------------------------------------------------------------------------
+
+✅ 2. Add a Clean, Professional Title and Subtitle
+Replace your title and intro text with:
+
+st.markdown("<h1 style='text-align: center; color: #2C3E50;'>Customer Churn Risk Predictor</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #7F8C8D;'>Enter key behavioral metrics to assess churn risk and receive personalized retention strategy.</p>", unsafe_allow_html=True)
+---------------------------------------------------------------------------------------------
+
+✅ 3. Apply a Smooth Professional Color Theme
+Wrap sections with styled markdown or containers:
+
+# Optional container background
+st.markdown("""
+    <style>
+        .main {
+            background-color: #f9f9f9;
+        }
+        .stButton>button {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            height: 3em;
+            width: 100%;
+        }
+        .stButton>button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+-------------------------------------------------------------
+
+✅ Final Touch: Center the Output Box
+Below the if st.button("🔍 Predict Churn"): block, update:
+
+
+st.metric(label="🔮 Predicted Churn Probability", value=f"{churn_prob:.2%}")
+--------------------------------------------------------------
+
+# Display Result
+---------------------
+st.success(f"💡 Risk Segment: **{risk}**")
+st.info(f"🛠️ Recommended Action: {action}")
+
+--------------------------
+Use st.success, st.info, st.warning, or st.error for colored output blocks.
+
+--------------------------------------------------------
+
+✅ Bonus: Add Footer with Organization Details
+At the end of your script:
+
+
+st.markdown("<hr>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 12px;'>© 2025 Quantumsoft Tech | Customer Experience Analytics</p>", unsafe_allow_html=True)
+---------------------------------------------------------------------------------------
+
+Let Me Know:
+If you share your organization logo image (.png or .jpg), I can adjust the layout and styling exactly with a preview.
+
+Would you like me to give you a complete updated churn_app.py with all these enhancements included?
+
+--------------------------------------------------------------------------------------
+🚀 PHASE 7 – DEPLOY TO STREAMLIT CLOUD
+✅ Prerequisites
+You have a GitHub account
+
+Your project folder (CPRS) contains:
+
+✅ churn_app.py
+
+✅ Quantumsoft_logo.png
+
+✅ xgb_model_selected_features.joblib
+
+✅ requirements.txt
+
+✅ Optional: .streamlit/config.toml for branding
+
+🪜 Step-by-Step: Push Code to GitHub
+Step 1: Sign in to GitHub
+Go to https://github.com and log in
+
+Click ➕ "New repository"
+
+Name: churn-risk-app
+
+Click ✅ "Create repository"
+
+--------------------------------------------
+✅ Step-by-Step: Finish Creating the Repository
+Repository name:
+churn-risk-app ✅ Perfect
+
+Visibility:
+Public is selected. That’s fine unless you want it private.
+
+README, .gitignore, License:
+Leave these unchecked for now (✔️ that’s okay — we’ll add them manually later if needed).
+✅ Recommended License for Most Projects
+👉 Choose: [MIT License]
+✅ Recommended .gitignore Template for Your Project:
+Since your project uses Python, you should select:
+
+Python
+
+✅ Click the green Create repository button
+
+=============================================================================================
+
+
+=====================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
