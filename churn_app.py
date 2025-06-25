@@ -1,11 +1,13 @@
 import streamlit as st
 import numpy as np
 import joblib
+import shap
+import matplotlib.pyplot as plt
 from PIL import Image
 import base64
 
-# 🌐 Page Configuration
 st.set_page_config(page_title="Customer Churn Predictor", layout="wide")
+
 
 # 🎨 Custom CSS Styling
 st.markdown("""
@@ -13,12 +15,10 @@ st.markdown("""
         html, body {
             background-color: #e6f0f8;
         }
-
         .block-container {
             background-color: #e6f0f8 !important;
             padding: 2rem 5rem;
         }
-
         .center-title {
             text-align: center;
             font-size: 30px;
@@ -26,28 +26,24 @@ st.markdown("""
             color: #1F4E79;
             margin-top: 0.5rem;
         }
-
         .center-subtitle {
             text-align: center;
             font-size: 16px;
             color: #3F88C5;
             margin-bottom: 2rem;
         }
-
         .logo-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 1rem;
         }
-
         .logo-container img {
             width: 100%;
             max-width: 400px;
             height: auto;
             object-fit: contain;
         }
-
         .form-container {
             background-color: #ffffffdd;
             border-radius: 12px;
@@ -55,19 +51,14 @@ st.markdown("""
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             margin: 1.5rem auto 2.5rem auto;
         }
-
         label {
             color: #1F4E79 !important;
             font-weight: 600;
         }
-
-        /* Input field styling */
         input, .stNumberInput > div, .stSlider, .stTextInput, .stTextArea, .stSelectbox {
             background-color: #ffffff !important;
             border-radius: 6px;
         }
-
-        /* Predict button styling */
         div.stButton > button {
             background-color: #1F4E79;
             color: white;
@@ -78,14 +69,11 @@ st.markdown("""
             border-radius: 8px;
             transition: background-color 0.3s ease, transform 0.2s ease-in-out;
         }
-
         div.stButton > button:hover {
             background-color: #163c5a;
             transform: scale(1.03);
             color: #fff;
         }
-
-        /* +/- button enhancement */
         button[aria-label="Increment"], button[aria-label="Decrement"] {
             background-color: #ffffff !important;
             color: #1F4E79 !important;
@@ -95,9 +83,7 @@ st.markdown("""
             font-weight: bold;
             font-size: 14px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-            transition: all 0.2s ease-in-out;
         }
-
         button[aria-label="Increment"]:hover,
         button[aria-label="Decrement"]:hover {
             background-color: #1F4E79 !important;
@@ -105,7 +91,6 @@ st.markdown("""
             border: 1px solid #1F4E79;
             transform: scale(1.05);
         }
-
         .footer {
             margin-top: 50px;
             text-align: center;
@@ -132,6 +117,7 @@ st.markdown("<div class='center-subtitle'>Enter key behavioral metrics to predic
 
 # 🔄 Load Trained Model
 model = joblib.load("xgb_model_selected_features.joblib")
+explainer = shap.Explainer(model)
 
 # 📋 Input Form
 st.markdown("<div class='form-container'>", unsafe_allow_html=True)
@@ -165,6 +151,14 @@ if st.button("🔍 Predict Churn"):
 
     st.success(f"🛡️ Risk Segment: **{risk}**")
     st.info(f"📌 Recommended Action: **{action}**")
+
+    # ✅ SHAP Explanation (Updated for compatibility)
+    st.subheader("🔍 Feature Impact on This Prediction")
+    shap_values = explainer(input_data)
+    fig, ax = plt.subplots(figsize=(10, 5))
+    shap.plots.waterfall(shap_values[0], show=False)
+    st.pyplot(fig)
+
 
 # 🦶 Footer
 st.markdown("<div class='footer'>© 2025 Quantumsoft Technologies | All rights reserved</div>", unsafe_allow_html=True)
